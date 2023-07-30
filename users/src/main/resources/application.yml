@@ -1,0 +1,18 @@
+#file: noinspection undefined
+application:
+  name: '@project.name@'
+
+management:
+  endpoints:
+    web:
+      base-path: /${application.name}/actuator
+
+spring:
+  application:
+    name: ms-user
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      uri: 'http://localhost:8080'
+      token: PASSWORD

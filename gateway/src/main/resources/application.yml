@@ -1,0 +1,42 @@
+#file: noinspection undefined
+server:
+  port: 9090
+
+spring:
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: 'http://localhost:8080'
+      token: PASSWORD
+    gateway:
+      routes:
+        #Users
+        - id: users
+          uri: lb://ms-user
+          predicates:
+            - Path=/v1/users**
+          filters:
+            - RewritePath=/v1/users(?<segment>.*), /api/v1/users$\{segment}
+
+        - id: users-swagger
+          predicates:
+            - Path=/users/**
+          uri: lb://ms-user
+
+        # Discovery server
+        - id: discovery-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/web
+          filters:
+            - SetPath=/
+        - id: discovery-server-resources
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
+  application:
+    name: ms-gateway
+  output:
+    ansi:
+      enabled: ALWAYS

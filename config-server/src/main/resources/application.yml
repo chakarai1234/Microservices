@@ -1,0 +1,33 @@
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  cloud:
+    config:
+      server:
+        git:
+          uri: 'file://${user.home}//Microservices/configs'
+          default-label: main
+      token: PASSWORD
+  application:
+    name: ms-config-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:8761/eureka

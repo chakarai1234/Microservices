@@ -1,0 +1,21 @@
+#file: noinspection undefined
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  datacenter: DEVELOPMENT
+  environment: DEVELOPMENT
+
+spring:
+  application:
+    name: ms-eureka-server
+
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      uri: 'http://localhost:8080'
+      token: PASSWORD
