@@ -24,7 +24,7 @@
     </modules>
 
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
 <!--        <maven.compiler.source>17</maven.compiler.source>-->
 <!--        <maven.compiler.target>17</maven.compiler.target>-->
         <gson.version>2.10.1</gson.version>
@@ -187,18 +187,18 @@
             <repositories>
                 <repository>
                     <id>nexus</id>
-                    <url>http://192.168.18.2:9999/repository/maven-public/</url>
+                    <url>https://nexus.chakarapani.com/repository/maven-public/</url>
                 </repository>
             </repositories>
             <distributionManagement>
                 <repository>
                     <id>maven-releases</id>
-                    <url>http://192.168.18.2:9999/repository/maven-releases/</url>
+                    <url>https://nexus.chakarapani.com/repository/maven-releases/</url>
                     <name>maven-releases</name>
                 </repository>
                 <snapshotRepository>
                     <id>maven-snapshots</id>
-                    <url>http://192.168.18.2:9999/repository/maven-snapshots/</url>
+                    <url>https://nexus.chakarapani.com/repository/maven-snapshots/</url>
                     <name>maven-snapshots</name>
                 </snapshotRepository>
             </distributionManagement>
